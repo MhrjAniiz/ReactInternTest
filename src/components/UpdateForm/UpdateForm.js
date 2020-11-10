@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { FormContext } from "../../context/FormContext";
+import { useHistory } from "react-router-dom";
 
 import "../Form/Form.styles.css";
 
-const UpdateForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [dob, setDob] = useState("");
-  const [city, setCity] = useState("");
-  const [district, setDistrict] = useState("");
-  const [province, setProvince] = useState("");
-  const [country, setCountry] = useState("");
+const UpdateForm = (props) => {
+  const { editUser, info } = useContext(FormContext);
+  const [selectedInfo, setSelectedInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    dob: "",
+    city: "",
+    district: "",
+    province: "",
+    country: "",
+  });
+
+  const history = useHistory();
+  const currentUserId = props.match.params.id;
+
+  useEffect(() => {
+    const userId = currentUserId;
+    const selectedUser = info.find((user) => user.id === userId);
+    setSelectedInfo(selectedUser);
+  }, [currentUserId, info]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // editUser(selectedInfo);
+    history.push("/");
+  };
+
+  const handleChange = (e) => {
+    setSelectedInfo({ ...selectedInfo, [e.target.name]: e.target.value });
   };
 
   return (
@@ -27,11 +47,11 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <input
-              value={name}
+              value={selectedInfo.name}
               type="text"
               name="name"
               required
-              onChange={(e) => setName(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -44,11 +64,11 @@ const UpdateForm = () => {
           <div className="col-75">
             {" "}
             <input
-              value={email}
+              value={selectedInfo.email}
               type="email"
               name="email"
               required
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -61,11 +81,11 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <input
-              value={phone}
+              value={selectedInfo.phone}
               type="number"
               name="phone"
               required
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -78,11 +98,11 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <input
-              value={dob}
+              value={selectedInfo.dob}
               type="date"
               name="dob"
               required
-              onChange={(e) => setDob(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -95,11 +115,11 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <input
-              value={city}
+              value={selectedInfo.city}
               type="text"
               name="city"
               required
-              onChange={(e) => setCity(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -112,11 +132,11 @@ const UpdateForm = () => {
           <div className="col-75">
             {" "}
             <input
-              value={district}
+              value={selectedInfo.district}
               type="text"
               name="district"
               required
-              onChange={(e) => setDistrict(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>
@@ -129,9 +149,9 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <select
-              onChange={(e) => setProvince(e.target.value)}
+              onChange={handleChange}
               name="province"
-              value={province}
+              value={selectedInfo.province}
             >
               <option value="Province No. 1">Province No. 1</option>
               <option value="Province No. 2">Province No. 2</option>
@@ -154,11 +174,11 @@ const UpdateForm = () => {
           </div>
           <div className="col-75">
             <input
-              value={country}
+              value={selectedInfo.country}
               type="text"
               name="country"
               required
-              onChange={(e) => setCountry(e.target.value)}
+              onChange={handleChange}
             />
           </div>
         </div>

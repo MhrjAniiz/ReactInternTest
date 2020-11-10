@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { FormContext } from "../../context/FormContext";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
+import { Link } from "react-router-dom";
 
 const SingleTableData = ({ result }) => {
   const { dispatch } = useContext(FormContext);
@@ -16,7 +17,9 @@ const SingleTableData = ({ result }) => {
       <td>{result.province}</td>
       <td>{result.country}</td>
       <td>
-        <EditIcon className="edit" />
+        <Link to={`/edit/${result.id}`}>
+          <EditIcon className="edit" />
+        </Link>
       </td>
       <td>
         <DeleteIcon

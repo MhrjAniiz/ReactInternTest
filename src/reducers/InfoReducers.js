@@ -20,6 +20,20 @@ export const InfoReducer = (state, action) => {
     case "REMOVE_INFO":
       return state.filter((result) => result.id !== action.id);
 
+    case "EDIT_USER":
+      const updateUser = action.payload;
+
+      const updateUsers = state.map((user) => {
+        if (user.id === updateUser.id) {
+          return updateUser;
+        }
+        return user;
+      });
+      return {
+        ...state,
+        users: updateUsers,
+      };
+
     default:
       return state;
   }

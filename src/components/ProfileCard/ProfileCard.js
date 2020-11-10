@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Card, CardContent, Avatar, Button } from "@material-ui/core";
 import "./ProfileCard.styles.css";
 import { FormContext } from "../../context/FormContext";
+import { Link } from "react-router-dom";
 
 export default function ProfileCard({ result }) {
   const { dispatch } = useContext(FormContext);
@@ -29,7 +30,9 @@ export default function ProfileCard({ result }) {
           </div>
           <div className="button-body">
             <Button className="btn" variant="contained" color="primary">
-              Edit
+              <Link className="edit-link " to={`/edit/${result.id}`}>
+                Edit
+              </Link>
             </Button>
             <Button
               className="btn"

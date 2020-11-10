@@ -9,12 +9,19 @@ const FormContextProvider = (props) => {
     return localData ? JSON.parse(localData) : [];
   });
 
+  const editUser = (user) => {
+    dispatch({
+      type: "EDIT_USER",
+      payload: user,
+    });
+  };
+
   useEffect(() => {
     localStorage.setItem("infos", JSON.stringify(info));
   }, [info]);
 
   return (
-    <FormContext.Provider value={{ info, dispatch }}>
+    <FormContext.Provider value={{ info, dispatch, editUser }}>
       {props.children}
     </FormContext.Provider>
   );

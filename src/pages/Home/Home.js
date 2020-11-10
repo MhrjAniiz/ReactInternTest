@@ -10,7 +10,6 @@ export default function Home() {
     <div className="main-container">
       <Form />
       <TableDataList />
-
       <Button className="home-btn" variant="contained" color="primary">
         <Link className="home-link" to="/profiles">
           Go to Profiles

@@ -11,7 +11,8 @@ const Form = () => {
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [province, setProvince] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Nepal");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +24,6 @@ const Form = () => {
     setEmail("");
     setPhone("");
     setDob("");
-    setCity("");
     setCity("");
     setDistrict("");
     setProvince("");
@@ -109,6 +109,7 @@ const Form = () => {
           </div>
           <div className="col-75">
             <input
+              value={city}
               type="text"
               name="city"
               required
