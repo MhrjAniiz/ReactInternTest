@@ -19,7 +19,7 @@ export const InfoReducer = (state, action) => {
         },
       ];
     case "REMOVE_INFO":
-      return state.filter((result) => result.id !== action.id);
+      return state.find((result) => result.id !== action.id);
 
     default:
       return state;

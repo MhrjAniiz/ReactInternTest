@@ -1,19 +1,33 @@
 import React, { useContext } from "react";
 import { FormContext } from "../../context/FormContext";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const SingleTableData = ({ result }) => {
-  const { removeInfo } = useContext(FormContext);
+  const { dispatch } = useContext(FormContext);
   return (
-    <div>
-      <p>{result.name}</p>
-      <p>{result.email}</p>
-      <p>{result.phone}</p>
-      <p>{result.district}</p>
-      <p>{result.province}</p>
-      <p>{result.country}</p>
-      <p>{result.dob}</p>
-      <p>{result.id}</p>
-    </div>
+    <tr>
+      <td>{result.name}</td>
+      <td>{result.email}</td>
+      <td>{result.phone}</td>
+      <td>{result.dob}</td>
+      <td>{result.city}</td>
+      <td>{result.district}</td>
+      <td>{result.province}</td>
+      <td>{result.country}</td>
+      <td>
+        <EditIcon
+          className="edit"
+          onClick={() => dispatch({ type: "UPDATE_INFO", id: result.id })}
+        />
+      </td>
+      <td>
+        <DeleteIcon
+          className="delete"
+          onClick={() => dispatch({ type: "REMOVE_INFO", id: result.id })}
+        />
+      </td>
+    </tr>
   );
 };
 

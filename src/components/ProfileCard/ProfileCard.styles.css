@@ -1,0 +1,32 @@
+.card {
+  width: 90%;
+  margin: 40px;
+}
+
+.card-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-body {
+  flex: 0.3;
+}
+.avatar {
+  height: 200px !important;
+  width: 200px !important;
+}
+
+.details {
+  flex: 0.5;
+  color: grey;
+}
+.details > h1 {
+  color: black;
+  text-transform: capitalize;
+}
+
+.btn {
+  margin-left: 5px !important;
+  margin-top: 5px !important;
+}
