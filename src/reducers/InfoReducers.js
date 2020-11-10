@@ -8,7 +8,6 @@ export const InfoReducer = (state, action) => {
         {
           name: action.info.name,
           email: action.info.email,
-
           phone: action.info.phone,
           dob: action.info.dob,
           city: action.info.city,
@@ -19,7 +18,7 @@ export const InfoReducer = (state, action) => {
         },
       ];
     case "REMOVE_INFO":
-      return state.find((result) => result.id !== action.id);
+      return state.filter((result) => result.id !== action.id);
 
     default:
       return state;

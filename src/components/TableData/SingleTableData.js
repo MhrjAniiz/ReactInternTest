@@ -16,10 +16,7 @@ const SingleTableData = ({ result }) => {
       <td>{result.province}</td>
       <td>{result.country}</td>
       <td>
-        <EditIcon
-          className="edit"
-          onClick={() => dispatch({ type: "UPDATE_INFO", id: result.id })}
-        />
+        <EditIcon className="edit" />
       </td>
       <td>
         <DeleteIcon

@@ -1,9 +1,8 @@
-import React, { useContext, useState } from "react";
-import { FormContext } from "../../context/FormContext";
-import "./Form.styles.css";
+import React, { useState } from "react";
 
-const Form = () => {
-  const { dispatch } = useContext(FormContext);
+import "../Form/Form.styles.css";
+
+const UpdateForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,23 +14,10 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "ADD_INFO",
-      info: { name, email, phone, dob, city, district, province, country },
-    });
-    setName("");
-    setEmail("");
-    setPhone("");
-    setDob("");
-    setCity("");
-    setCity("");
-    setDistrict("");
-    setProvince("");
-    setCountry("");
   };
 
   return (
-    <div className="container">
+    <div className="container2">
       <form onSubmit={handleSubmit}>
         <div className="row">
           <div className="col-25">
@@ -109,6 +95,7 @@ const Form = () => {
           </div>
           <div className="col-75">
             <input
+              value={city}
               type="text"
               name="city"
               required
@@ -146,9 +133,6 @@ const Form = () => {
               name="province"
               value={province}
             >
-              <option value="" selected disabled hidden>
-                Choose here
-              </option>
               <option value="Province No. 1">Province No. 1</option>
               <option value="Province No. 2">Province No. 2</option>
               <option value="Bagmati Province">Bagmati Province</option>
@@ -179,11 +163,11 @@ const Form = () => {
           </div>
         </div>
         <div className="row">
-          <input type="submit" value="submit" />
+          <input type="submit" value="update" />
         </div>
       </form>
     </div>
   );
 };
 
-export default Form;
+export default UpdateForm;
