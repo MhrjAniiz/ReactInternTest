@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { FormContext } from "../../context/FormContext";
 import "./Form.styles.css";
+import CheckIcon from "@material-ui/icons/Check";
 
 const Form = () => {
   const { dispatch } = useContext(FormContext);
@@ -12,7 +13,6 @@ const Form = () => {
   const [district, setDistrict] = useState("");
   const [province, setProvince] = useState("");
   const [country, setCountry] = useState("Nepal");
-  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +47,11 @@ const Form = () => {
               required
               onChange={(e) => setName(e.target.value)}
             />
+            {name.length === 0 ? (
+              <h5 className="errormessage">Name is required</h5>
+            ) : (
+              <CheckIcon className="check" />
+            )}
           </div>
         </div>
         <div className="row">
@@ -64,6 +69,15 @@ const Form = () => {
               required
               onChange={(e) => setEmail(e.target.value)}
             />
+            {/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+              email
+            ) ? (
+              <CheckIcon className="check" />
+            ) : (
+              <h5 className="errormessage">
+                Please use '@' while inserting your email
+              </h5>
+            )}
           </div>
         </div>
 
@@ -81,6 +95,14 @@ const Form = () => {
               required
               onChange={(e) => setPhone(e.target.value)}
             />
+            {phone.length < 7 ? (
+              <h5 className="errormessage">
+                {" "}
+                Phone number can't be less than 7 digits
+              </h5>
+            ) : (
+              <CheckIcon className="check" />
+            )}
           </div>
         </div>
 
