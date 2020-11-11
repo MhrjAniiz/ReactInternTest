@@ -29,8 +29,8 @@ const UpdateForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // editUser(selectedInfo);
-    alert("successfully updated");
     history.push("/");
+    alert("successfully updated");
   };
 
   const handleChange = (e) => {
