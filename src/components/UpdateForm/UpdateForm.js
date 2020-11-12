@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import "../Form/Form.styles.css";
 
 const UpdateForm = (props) => {
-  const { editUser, info } = useContext(FormContext);
+  const { info } = useContext(FormContext);
   const [selectedInfo, setSelectedInfo] = useState({
     name: "",
     email: "",
