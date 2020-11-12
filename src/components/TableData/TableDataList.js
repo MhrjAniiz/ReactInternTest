@@ -24,22 +24,25 @@ const TableDataList = () => {
       {info.length ? (
         <div>
           <table className="table-body">
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone Number</th>
-              <th>Date of Birth</th>
-              <th>City</th>
-              <th>District</th>
-              <th>Province</th>
-              <th>Country</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-
-            {sorted.map((result) => {
-              return <SingleTableData key={result.id} result={result} />;
-            })}
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Date of Birth</th>
+                <th>City</th>
+                <th>District</th>
+                <th>Province</th>
+                <th>Country</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sorted.map((result) => {
+                return <SingleTableData key={result.id} result={result} />;
+              })}
+            </tbody>
           </table>
           <button className="asc-dsc" onClick={handleAsc}>
             Ascending order

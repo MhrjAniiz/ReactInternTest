@@ -169,9 +169,7 @@ const Form = () => {
               name="province"
               value={province}
             >
-              <option value="" selected disabled hidden>
-                Choose here
-              </option>
+              <option value="">Choose here</option>
               <option value="Province No. 1">Province No. 1</option>
               <option value="Province No. 2">Province No. 2</option>
               <option value="Bagmati Province">Bagmati Province</option>
